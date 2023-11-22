@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Awesome Front End</title>
+    <script>
+        function onGet(version) {
+            const url = "http://54.73.98.215:3000/"; // !!! ATTENZIONE modificare con l'IP del vostro BackEnd
+            var headers = {}
+
+            fetch(url, {
+                method: "GET",
+                mode: 'cors',
+                headers: headers
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(response.error)
+                    }
+                    return response.text();
+                })
+                .then(function (data) {
+                    console.log(data)
+                    document.getElementById('messages').value = data;
+                })
+                .catch(function (error) {
+                    document.getElementById('messages').value = error;
+                });
+        }
+
+    </script>
+</head>
+<body>
+<h1>Awesome [YOUR NAME] Front End (Version X)</h1>
+<div class="centred">
+    <textarea id="messages" name="messages" rows="10" cols="50">Messages</textarea><br/>
+    <form id="form1">
+        <input type="button" value="Call Back End" onclick="onGet('v1')"/>
+    </form>
+</div>
+<br><br><br><br><br><br>
+<footer>
+    <p>ITS Alto Adriatico DevOps2021</p>
+    <p>R5F4094F2DD31963A9A3F3F87BC96CB49ACE37507</p>
+</footer>
+</body>
+</html>
